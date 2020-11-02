@@ -1,0 +1,113 @@
+import * as React from 'react';
+import { Text, View, Button, TouchableOpacity } from 'react-native';
+import { Audio } from 'expo-av';
+
+class SoundButton extends React.Component {
+  playSound = async () => {
+    await Audio.Sound.createAsync(
+      {
+        uri: 'http://soundbible.com/mp3/Buzzer-SoundBible.com-188422102.mp3',
+      },
+      { shouldPlay: true }
+    );
+  };
+
+  render() {
+    return (
+      <View>
+       <TouchableOpacity
+        onPress={this.playSound}
+        style={{
+          backgroundColor: 'blue',
+          borderRadius: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: 40,
+          marginBottom:20,
+          width: 250,
+          height: 100,
+        }}>
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+          Sound 1{' '}
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={this.playSound}
+        style={{
+          backgroundColor: 'green',
+          borderRadius: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: 40,
+          marginTop:0,
+          width: 250,
+          height: 100,
+        }}>
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+          Sound 2{' '}
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={this.playSound}
+        style={{
+          backgroundColor: 'red',
+          borderRadius: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: 40,
+          marginTop:20,
+          width: 250,
+          height: 100,
+        }}>
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+          Sound 3{' '}
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={this.playSound}
+        style={{
+          backgroundColor: 'orange',
+          borderRadius: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: 40,
+          marginTop:20,
+          width: 250,
+          height: 100,
+        }}>
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+          Sound 4{' '}
+        </Text>
+      </TouchableOpacity>
+       <TouchableOpacity
+        onPress={()=>{
+          Audio.setIsEnabledAsync(true);
+        }}
+        style={{
+          backgroundColor: 'purple',
+          borderRadius: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginLeft: 40,
+          marginTop:20,
+          width: 250,
+          height: 50,
+        }}>
+        <Text style={{ color: 'white', fontWeight: 'bold' }}>
+          Stop{' '}
+        </Text>
+      </TouchableOpacity>
+     </View>
+    );
+  }
+}
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={{ marginTop: 200 }}>
+        <SoundButton />
+      </View>
+    );
+  }
+}
